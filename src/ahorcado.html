@@ -43,7 +43,8 @@
         usuario que introduzca un texto. */
         const palabra = prompt("Ingresa una palabra para adivinar!");
         //split toma una cadena y la divide elemento a elemento
-        const arrPalabra = palabra.split("");
+        let palabramin =palabra.toLowerCase(); //convierto la palabra en minuscula -
+        const arrPalabra = palabramin.split("");
         //Muestra un mensaje en la consola web (o del intérprete JavaScript).
         //solo se ve si voy a la consola con F12
         console.log(arrPalabra);
