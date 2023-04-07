@@ -2,17 +2,19 @@
     //variables globlales / si hago F5 se recarga la pagina nuevamente con estos valores
     //palabra a advinar, no se puede modificar
     
-    let arrCoincidencias = ['hola']; // esto es para corregir!
+    let arrCoincidencias = []; 
     const palabrAdivinar = ingresarPalabra(arrCoincidencias);
+    let intentos = 6;
 
     //va a funcionar mientras se modifique el input
     const letra = document.querySelector('input');
+
     //cada vez que el usuario escriba algo en el imput ejecutar la siguiente funcion
     letra.oninput = function(){
-        soloLetras(letra.value, palabrAdivinar);
+        soloLetras(letra.value, palabrAdivinar,arrCoincidencias);
     };
 
-    function ingresarPalabra(arrCoincidencias){
+    function ingresarPalabra(){
         //variables locales
         /*El método prompt() muestra un diálogo con mensaje opcional, que solicita al 
         usuario que introduzca un texto. */
@@ -30,7 +32,7 @@
         document.getElementById("tablero").innerHTML = `
             <table border="1"> 
                 <tr>
-                    ${creaTablero(arrPalabra, arrCoincidencias)}    
+                    ${creaTablero(arrPalabra)}    
                 </tr>    
             </table>
         `;
@@ -38,23 +40,21 @@
         return arrPalabra;
     };
 
-    function valida_palabra(palabramin){
-        
 
-    }
-    function creaTablero(arrPalabra, arrCoincidencias){
-        console.log(arrCoincidencias);
-        //let tablero = "";
+    function creaTablero(arrPalabra){
+
+        let tablero = "";
+
         //forEach es como el for pero itera sobre un array
         /*dentro del forEach hay una funcion flecha pequeña, letra va a tomar
         el valor de cada iteracion*/
         arrPalabra.forEach(letra => {
-            arrCoincidencias = arrCoincidencias + "<td> ? </td>";
+            tablero = tablero + "<td> ? </td>";
         });
-        return arrCoincidencias;
+        return tablero;
     }
 
-    function soloLetras(cadena, palabrAdivinar){
+    function soloLetras(cadena, palabrAdivinar,arrCoincidencias){
         //pattern restringue que solo ingrese solo letras
         const pattern = new RegExp('[a-zA-Z]');
         //verifica que lo que obtuve  coincide con el patron, en este caso letras
@@ -71,37 +71,78 @@
             document.getElementById("tablero").innerHTML = `
             <table border="1">
                 <tr>
-                    ${buscarCoincidencia(cadena,palabrAdivinar)}    
+                    ${buscarCoincidencia(cadena,palabrAdivinar,arrCoincidencias)}    
                 </tr>    
             </table>
         `;
+            //limpia el cuadro de texto para ingresar otra letra
+            document.querySelector('input').value = "";
             return true;
         }
     }
     //si la variable esta en la palabra, la muestra y si no le coloca ?
-    function buscarCoincidencia(letra, arrPalabra){
+    function buscarCoincidencia(letra, arrPalabra,arrCoincidencias){
         let tablero = "";
         let coincidencias = 0;
+        let exito = true;
+
+        
         arrPalabra.forEach(caracter => {
-            if(caracter == letra){
+            
+            //includes sirve para saber si el caracter está en el array, entonces devuelve un true
+            
+
+            //if: filtra si el caracter ya fue identificado
+            if(arrCoincidencias.includes(caracter)){
+                tablero = tablero + "<td>"+ caracter +" </td>";
+
+            /*else if: si no fue identificado guarda el caracter en arrCoincidencias e incrementa coincidencias 
+            para registrarlas y luego informar en la función leyendaCoincidencia*/ 
+            } else if(caracter == letra){              
                 tablero = tablero + "<td>"+ caracter +" </td>"; 
+                arrCoincidencias.push(caracter);//push inserta al final del array cada caracter
                 coincidencias = coincidencias + 1;
-            }else{
+            
+            //else: no hubo coincidencia, pongo la variable exito en false para luego evaluar los intentos
+            } else{
                 tablero = tablero + "<td> ? </td>";
+                exito = false;
             }
-            //llama a la funcion conincidencia que me muestra la cantidad
-            leyendaCoincidencia(coincidencias);
+            
         });
+
+        leyendaCoincidencia(coincidencias, letra);
+
+        //si no hubo aciertos va perdiendo intentos
+        if(coincidencias==0)
+        {intentos--;}
+        console.log(arrCoincidencias + " " + intentos);//imprimo la letra que coincide e intentos que quedan
+
+        //
+        if(exito){ leyendaFelicitaciones(true);}
+        else if(intentos==0) {leyendaFelicitaciones(false);}
+            
+
         return tablero;
     }
 
-    function leyendaCoincidencia(coincidencias){
+    function leyendaCoincidencia(coincidencias, caracter){
         if(coincidencias > 0){
-            document.getElementById("status").innerHTML = `Hubo ${coincidencias} coincidencias!!!`;
+            document.getElementById("status").innerHTML = `Hubo ${coincidencias} coincidencias con la letra ` + caracter;
         }else{
-            document.getElementById("status").innerHTML = `No hubo coinciencias :(`;
+            document.getElementById("status").innerHTML = `No hubo coinciencias nuevas con la letra ` + caracter + `, te quedan ` + (intentos-1) + ` intentos` ;
         }
     }
+    function leyendaFelicitaciones(gano){
+        
+        if(gano){
+            document.getElementById("status").innerHTML = `Felicitaciones. Ganaste!!!`;
+        }else{
+            document.getElementById("status").innerHTML = `Se acabaron los intentos. Perdiste`;
+        }
+        
+    }
+
 
 
     
