@@ -5,6 +5,7 @@
     let arrCoincidencias = []; 
     const palabrAdivinar = ingresarPalabra(arrCoincidencias);
     let intentos = 6;
+    
 
     //va a funcionar mientras se modifique el input
     const letra = document.querySelector('input');
@@ -85,7 +86,7 @@
         let tablero = "";
         let coincidencias = 0;
         let exito = true;
-
+        
         
         arrPalabra.forEach(caracter => {
             
@@ -115,13 +116,15 @@
 
         //si no hubo aciertos va perdiendo intentos
         if(coincidencias==0){ 
-            intentos--;
+            intentos--; 
+            document.getElementById('imagen').src = "/img/ahorcado${intentos}.png";     
         }
 
-       
+        
         console.log(arrCoincidencias + " " + intentos);//imprimo la letra que coincide e intentos que quedan
 
-        //
+
+
         if(exito){ leyendaFelicitaciones(true);}
         else if(intentos==0) {leyendaFelicitaciones(false);}
             
