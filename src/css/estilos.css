@@ -1,5 +1,32 @@
 body{
-  margin:0;
-  background: url(img/fondo.jpg) no-repeat center;
+  margin:auto;
+  background: url(/img/fondo.png) no-repeat center;
   background-size: cover;
+  
+}
+header{
+  background: black;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1,h4{
+  margin: 0;
+  text-align: center;
+  color: black  ;
+}
+main{
+  width: 20%;
+  margin: auto;
+  padding: 20px;
+  background: rgba(red, green, blue, alpha);
+  display: flex;
+}
+#imagen{
+  width: 200px;
+}
+#cuadro{
+  text-align: center;
+  padding: 20px;
 }

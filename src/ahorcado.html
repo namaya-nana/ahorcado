@@ -2,26 +2,35 @@
 <html>
     <head>
         <title>Juego Ahorcado</title>
-        <link rel="stylesheet" href="estilos.css"/>
+        <link rel="stylesheet" href="css/estilos.css"/>
     </head>
-    <body class="color">
+    <body class="color" >
         <h1>Juego del Ahorcado</h1>
-        <img src="img/ahorcado_6.png"/>
+        <br>
         <h4>Adivina la palabra!</h4>
-        <div id="tablero"></div>
-        <br/>
-        <br/>
-        <br/>
+        <main>
+
+            <br><br>
+            <div id="tablero"></div>
+            <br/>
+            <br/>
+            <br/>
+        <img id="imagen" src="img/ahorcado_6.png"/>
+        </main>
+        
+       
+        
         <h4>Ingresa una letra...</h4>
+        
      
-        <div class="casillaIngreso">            
+        <div id="cuadro" class="casillaIngreso">            
             <input type="text" name="nombre" maxlength="1" />
         </div>
         <br/>
         <br/>
         <br/>
         <div id="status"></div>
-       
+        
      
     </body>
     <script src="js/ahorcadojs.js"></script>
