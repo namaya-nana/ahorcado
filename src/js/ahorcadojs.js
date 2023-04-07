@@ -114,8 +114,11 @@
         leyendaCoincidencia(coincidencias, letra);
 
         //si no hubo aciertos va perdiendo intentos
-        if(coincidencias==0)
-        {intentos--;}
+        if(coincidencias==0){ 
+            intentos--;
+        }
+
+       
         console.log(arrCoincidencias + " " + intentos);//imprimo la letra que coincide e intentos que quedan
 
         //

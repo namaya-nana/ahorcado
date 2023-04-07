@@ -3,33 +3,32 @@
     <head>
         <title>Juego Ahorcado</title>
         <link rel="stylesheet" href="css/estilos.css"/>
+        <h1>Juego del Ahorcado</h1>
     </head>
     <body>
-        <h1>Juego del Ahorcado</h1>
         <br>
-        <h4 id="visor"><spand Adivina la palabra!</h4>
+        
+        <h4 id="visor"><span class="blancocuadro"> Adivina la palabra!</span></h4>
+        
         <main>
-
+          <div>
             <br><br>
             <div id="tablero"></div>
             <br/>
-            <br/>
-            <br/>
-        <img id="imagen" src="img/ahorcado_6.png"/>
-        </main>
-        
-       
-        
-        <h4>Ingresa una letra...</h4>
-        
+            <h4 id="visor"><span class="blancocuadro">Ingresa una letra...</span></h4>
      
-        <div id="cuadro" class="casillaIngreso">            
-            <input type="text" name="nombre" maxlength="1" />
-        </div>
-        <br/>
-        <br/>
-        <br/>
-        <div id="status"></div>
+            <div id="cuadro" class="casillaIngreso">            
+                <input type="text" name="nombre" maxlength="1" />
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div id="status" class="blancocuadro"></div>
+          </div>  
+            <img id="imagen" src="img/ahorcado_6.png"/>
+        </main>
+    
+        
         
      
     </body>
