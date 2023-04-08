@@ -96,6 +96,7 @@
             //if: filtra si el caracter ya fue identificado
             if(arrCoincidencias.includes(caracter)){
                 tablero = tablero + "<td>"+ caracter +" </td>";
+                
 
             /*else if: si no fue identificado guarda el caracter en arrCoincidencias e incrementa coincidencias 
             para registrarlas y luego informar en la función leyendaCoincidencia*/ 
@@ -103,11 +104,14 @@
                 tablero = tablero + "<td>"+ caracter +" </td>"; 
                 arrCoincidencias.push(caracter);//push inserta al final del array cada caracter
                 coincidencias = coincidencias + 1;
+                document.getElementById('tablero').style.color="blue"; //so completa la palabra se pone azul
+                
             
             //else: no hubo coincidencia, pongo la variable exito en false para luego evaluar los intentos
             } else{
                 tablero = tablero + "<td> ? </td>";
                 exito = false;
+                document.getElementById('tablero').style.color="green";
             }
             
         });
@@ -123,7 +127,8 @@
             if(intentos==2){document.getElementById('imagen').src = "img/ahorcado2.png"; }
             if(intentos==1){document.getElementById('imagen').src = "img/ahorcado1.png"; }
             if(intentos==0){document.getElementById('imagen').src = "img/ahorcado0.png"; }
-            if(intentos<0){location.reload();}
+            
+            if(intentos<0){location.reload();}//si se terminan los intentos recarga la pagina
                 
         }
 
@@ -149,7 +154,9 @@
     function leyendaFelicitaciones(gano){
         
         if(gano){
-            document.getElementById("status").innerHTML = `Felicitaciones. Ganaste!!!`;
+            document.getElementById("status").innerHTML = `Felicitaciones. Ganaste!!! Pulse una tecla para salir`;
+            document.addEventListener("keydown",function(){location.reload();}) //recarga la pagina 
+
         }else{
             document.getElementById("status").innerHTML = `Se acabaron los intentos. Perdiste`;
             
@@ -157,6 +164,7 @@
         
     }
 
-
+    
+   
 
     
