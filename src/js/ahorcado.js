@@ -5,6 +5,10 @@
     let arrCoincidencias = []; 
     const palabrAdivinar = ingresarPalabra(arrCoincidencias);
     let intentos = 6;
+    const btn = document.getElementById('jugar');
+    btn.disabled =true;
+    const casilla = document.getElementById('entrada');
+    casilla.disabled =false;
     
 
     //va a funcionar mientras se modifique el input
@@ -58,10 +62,11 @@
     function soloLetras(cadena, palabrAdivinar,arrCoincidencias){
         //pattern restringue que solo ingrese solo letras
         const pattern = new RegExp('[a-zA-Z]');
+        let cadenamin =cadena.toLowerCase();
         //verifica que lo que obtuve  coincide con el patron, en este caso letras
-        console.log(pattern.test(cadena));
+        console.log(pattern.test(cadenamin));
         /*si es falso, va a agarrar el imput y lo va a borrar*/
-        if(!pattern.test(cadena)){
+        if(!pattern.test(cadenamin)){
             document.querySelector('input').value = "";
             //me va a al id "status"
             document.getElementById("status").innerHTML = "Solo puedes ingresar letras!!!..";
@@ -72,7 +77,7 @@
             document.getElementById("tablero").innerHTML = `
             <table border="1">
                 <tr>
-                    ${buscarCoincidencia(cadena,palabrAdivinar,arrCoincidencias)}    
+                    ${buscarCoincidencia(cadenamin,palabrAdivinar,arrCoincidencias)}    
                 </tr>    
             </table>
         `;
@@ -104,14 +109,14 @@
                 tablero = tablero + "<td>"+ caracter +" </td>"; 
                 arrCoincidencias.push(caracter);//push inserta al final del array cada caracter
                 coincidencias = coincidencias + 1;
-                document.getElementById('tablero').style.color="blue"; //so completa la palabra se pone azul
+                
                 
             
             //else: no hubo coincidencia, pongo la variable exito en false para luego evaluar los intentos
             } else{
                 tablero = tablero + "<td> ? </td>";
                 exito = false;
-                document.getElementById('tablero').style.color="green";
+                
             }
             
         });
@@ -126,9 +131,9 @@
             if(intentos==3){document.getElementById('imagen').src = "img/ahorcado3.png"; }
             if(intentos==2){document.getElementById('imagen').src = "img/ahorcado2.png"; }
             if(intentos==1){document.getElementById('imagen').src = "img/ahorcado1.png"; }
-            if(intentos==0){document.getElementById('imagen').src = "img/ahorcado0.png"; }
-            
-            if(intentos<0){location.reload();}//si se terminan los intentos recarga la pagina
+            if(intentos==0){document.getElementById('imagen').src = "img/ahorcado0.png"; 
+            casilla.disabled =true; //deshabilito el input
+            btn.disabled =false;} //habilito el boton de volver a jugar
                 
         }
 
@@ -146,20 +151,28 @@
 
     function leyendaCoincidencia(coincidencias, caracter){
         if(coincidencias > 0){
+            document.getElementById('status').style.backgroundColor="blue";//coidencia fondo azul
             document.getElementById("status").innerHTML = `Hubo ${coincidencias} coincidencias con la letra ` + caracter;
         }else{
+            document.getElementById('status').style.backgroundColor="red";//no coincidencia fondo rojo
             document.getElementById("status").innerHTML = `No hubo coinciencias nuevas con la letra ` + caracter + `, te quedan ` + (intentos-1) + ` intentos` ;
         }
     }
     function leyendaFelicitaciones(gano){
         
         if(gano){
-            document.getElementById("status").innerHTML = `Felicitaciones. Ganaste!!! Pulse una tecla para salir`;
-            document.addEventListener("keydown",function(){location.reload();}) //recarga la pagina 
+            document.getElementById('status').style.color="green"; //letra verde
+            document.getElementById('status').style.backgroundColor="black"; // fondo negro
+            document.getElementById("status").innerHTML = `Felicitaciones. Ganaste!!!`;
+            casilla.disabled =true;
+            btn.disabled =false;
+            btn.addEventListener("click",function(){location.reload();}) //recarga la pagina 
 
         }else{
+            document.getElementById('status').style.color="red";//letra roja
+            document.getElementById('status').style.backgroundColor="black"; //fondo negro
             document.getElementById("status").innerHTML = `Se acabaron los intentos. Perdiste`;
-            
+            btn.addEventListener("click",function(){location.reload();}) //recarga la pagina 
         }
         
     }

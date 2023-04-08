@@ -52,4 +52,12 @@ main{
 }
 #tablero{
   font-size: 2em; /*tamaño de las letras a adivinar*/
+  
+}
+
+button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
