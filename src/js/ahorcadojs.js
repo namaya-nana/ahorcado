@@ -116,8 +116,15 @@
 
         //si no hubo aciertos va perdiendo intentos
         if(coincidencias==0){ 
-            intentos--; 
-            document.getElementById('imagen').src = "/img/ahorcado${intentos}.png";     
+            intentos--; //segun el numero de intento cambio la direccion de la imagen
+            if(intentos==5){document.getElementById('imagen').src = "img/ahorcado5.png"; }
+            if(intentos==4){document.getElementById('imagen').src = "img/ahorcado4.png"; }
+            if(intentos==3){document.getElementById('imagen').src = "img/ahorcado3.png"; }
+            if(intentos==2){document.getElementById('imagen').src = "img/ahorcado2.png"; }
+            if(intentos==1){document.getElementById('imagen').src = "img/ahorcado1.png"; }
+            if(intentos==0){document.getElementById('imagen').src = "img/ahorcado0.png"; }
+            if(intentos<0){location.reload();}
+                
         }
 
         
@@ -145,6 +152,7 @@
             document.getElementById("status").innerHTML = `Felicitaciones. Ganaste!!!`;
         }else{
             document.getElementById("status").innerHTML = `Se acabaron los intentos. Perdiste`;
+            
         }
         
     }
