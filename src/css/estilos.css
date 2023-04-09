@@ -1,20 +1,13 @@
 body{
   margin:auto;
-  background-color: lightgrey;
-  background: url(../img/fondo.png) no-repeat center;
-  background-size: cover;
-  min-height: 100vh;
+  background-color: lightgrey; /*si la imagen no la carga el fondo es gris claro*/
+  background: url(../img/fondo.png) no-repeat center; /*inserta la imagen del fondo*/
+  background-size: cover;/*que la imagen cubra todo*/
+  min-height: 100vh; /*cubre el 100%*/
   font-family: 'Abril Fatface', cursive;
   font-family: 'Carter One', cursive;
   font-family: 'Original Surfer', cursive;
   }
-
-header{
-  background: black;
-  padding: 10px;
-  text-align: center;
-  margin-bottom: 20px;
-}
 
 h1{
   margin: 0;
@@ -23,13 +16,14 @@ h1{
 }
 
 main{
-  width: 30%;
+  width: 30%;/*modifica el tamaño del cuadrado donde esta el juego*/
   margin: auto;
-  padding: 20px;
+  padding: 50px;
   background: rgba(255,255,255,.7);/*coloco una transparencia de 70% en main*/
-  display: flex;
-  gap: 30px;
+  display: flex; /*hace que lo que esta dentro del mail se agrupe uno al lado del otro*/
+  gap: 50px;
 }
+
 #imagen{
   width: 200px; /*tamaño de la imagen de ahorcado*/
 }
@@ -40,24 +34,23 @@ main{
 /*visor y blancocuadro me sirva para ponerle fondo negro a la oración para que no se pierda en el fondo*/
 #visor{  
   text-align: center;
-}/*
-.blancocuadro{
-  color: #FFFFFF;
-  background-color: black;
-}*/
+}
+
 #status{ /*fondo para el mensaje de coincidencia o si ganaste o perdiste*/
   text-align: center;
   color: #FFFFFF;
   background-color: black;
 }
 #tablero{
-  font-size: 2em; /*tamaño de las letras a adivinar*/
-  
+  font-size: 3em; /*tamaño de las letras a adivinar*/
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 button{
   display: block;
-  margin-left: auto;
+  margin-left: auto; /*margin-left junto margin-right centran el boton*/
   margin-right: auto;
-  margin-top: 20px;
+  margin-top: 20px; /*separa el boton del cuadro*/
 }
