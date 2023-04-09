@@ -16,8 +16,9 @@ h1{
 }
 
 main{
-  width: 30%;/*modifica el tamaño del cuadrado donde esta el juego*/
+  width: 35%;/*modifica el tamaño del cuadrado donde esta el juego*/
   margin: auto;
+
   padding: 50px;
   background: rgba(255,255,255,.7);/*coloco una transparencia de 70% en main*/
   display: flex; /*hace que lo que esta dentro del mail se agrupe uno al lado del otro*/
@@ -45,7 +46,7 @@ main{
   font-size: 3em; /*tamaño de las letras a adivinar*/
   margin-left: auto;
   margin-right: auto;
-
+  
 }
 
 button{

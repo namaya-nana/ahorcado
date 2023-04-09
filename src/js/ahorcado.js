@@ -1,9 +1,12 @@
-
+/* Grupo
+    Tur, Natalia
+    Amaya, Natalia
+     */
     //variables globlales / si hago F5 se recarga la pagina nuevamente con estos valores
     //palabra a advinar, no se puede modificar
     
     let arrCoincidencias = []; 
-    const palabrAdivinar = ingresarPalabra(arrCoincidencias);
+    const palabrAdivinar = ingresarPalabra();
     let intentos = 6;
     const btn = document.getElementById('jugar');
     btn.disabled =true;
@@ -35,7 +38,7 @@
         los descendientes del elemento.*/
         //construye la tabla donde esta el id "tablero", usa comillas invertidas
         document.getElementById("tablero").innerHTML = `
-            <table border="1"> 
+            <table > 
                 <tr>
                     ${creaTablero(arrPalabra)}    
                 </tr>    
@@ -75,7 +78,7 @@
         }else{ /*vuelve a crear una tabla con el resultado de la funcion 
             buscarcoinCidencias*/
             document.getElementById("tablero").innerHTML = `
-            <table border="1">
+            <table  >
                 <tr>
                     ${buscarCoincidencia(cadenamin,palabrAdivinar,arrCoincidencias)}    
                 </tr>    
@@ -100,13 +103,13 @@
 
             //if: filtra si el caracter ya fue identificado
             if(arrCoincidencias.includes(caracter)){
-                tablero = tablero + "<td>"+ caracter +" </td>";
+                tablero = tablero + "<td style='background-color:green'>"+ caracter +" </td>";
                 
 
             /*else if: si no fue identificado guarda el caracter en arrCoincidencias e incrementa coincidencias 
             para registrarlas y luego informar en la función leyendaCoincidencia*/ 
             } else if(caracter == letra){              
-                tablero = tablero + "<td>"+ caracter +" </td>"; 
+                tablero = tablero + "<td style='background-color:green'>"+ caracter +" </td>"; 
                 arrCoincidencias.push(caracter);//push inserta al final del array cada caracter
                 coincidencias = coincidencias + 1;
                 
