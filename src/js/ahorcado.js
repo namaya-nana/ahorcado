@@ -103,13 +103,13 @@
 
             //if: filtra si el caracter ya fue identificado
             if(arrCoincidencias.includes(caracter)){
-                tablero = tablero + "<td style='background-color:green'>"+ caracter +" </td>";
+                tablero = tablero + "<td style='background-color:lightgreen'>"+ caracter +" </td>";
                 
 
             /*else if: si no fue identificado guarda el caracter en arrCoincidencias e incrementa coincidencias 
             para registrarlas y luego informar en la función leyendaCoincidencia*/ 
             } else if(caracter == letra){              
-                tablero = tablero + "<td style='background-color:green'>"+ caracter +" </td>"; 
+                tablero = tablero + "<td style='background-color:lightgreen'>"+ caracter +" </td>"; 
                 arrCoincidencias.push(caracter);//push inserta al final del array cada caracter
                 coincidencias = coincidencias + 1;
                 
